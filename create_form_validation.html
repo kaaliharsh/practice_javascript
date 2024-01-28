@@ -1,0 +1,55 @@
+
+
+<html>
+
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <Form id="form_validation">
+        <label for="name">Name</label>
+        <input type="text" id="name" require name="name"/><br/>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" require/><br/>
+
+        <label for="pincode" >Pincode</label>
+        <input type="text" require name="pincode" id="pincode"/><br/>
+
+        <input type="submit" value="Submit">
+
+    </Form>
+
+<script>
+
+    document.getElementById('form_validation').addEventListener('submit',function(event){
+        var name=document.getElementById('name').value;
+        var password=document.getElementById('password').value;
+        var address=document.getElementById('address').value;
+
+
+        if(name=='' || password=='' || address==''){
+            alert('Please fill in all fields');
+            event.preventDefault();
+            return;
+        }
+
+        if(!/[A-Z]/.test(password) || password.length<8){
+            alert('Password must contain at least 1 capital letter and have a minimum length of 8 characters.');
+            event.preventDefault();
+            return;
+        }
+
+        if(!/^\d{6}$/.test(pincode)){
+            alert('Pincode must be numeric and contain 6 digits.');
+            event.preventDefault();
+            return;
+        }
+    });
+
+</script>
+
+
+
+</body>
+</html>
